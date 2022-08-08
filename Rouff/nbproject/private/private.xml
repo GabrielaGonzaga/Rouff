@@ -5,6 +5,9 @@
         <group>
             <file>file:/C:/Users/Gabriela%20Gonzaga/Documents/NetBeansProjects/Rouff/src/rouff/Rouff.java</file>
             <file>file:/C:/Users/Gabriela%20Gonzaga/Documents/NetBeansProjects/Rouff/src/VIEW/frmLogin.java</file>
+            <file>file:/C:/Users/Gabriela%20Gonzaga/Documents/NetBeansProjects/Rouff/src/DTO/UserDTO.java</file>
+            <file>file:/C:/Users/Gabriela%20Gonzaga/Documents/NetBeansProjects/Rouff/src/DB/UserDB.java</file>
+            <file>file:/C:/Users/Gabriela%20Gonzaga/Documents/NetBeansProjects/Rouff/src/DB/DB_Connection.java</file>
             <file>file:/C:/Users/Gabriela%20Gonzaga/Documents/NetBeansProjects/Rouff/src/VIEW/frmDashBoard.java</file>
         </group>
     </open-files>
