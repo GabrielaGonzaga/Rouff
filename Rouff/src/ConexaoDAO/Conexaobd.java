@@ -7,15 +7,18 @@ import javax.swing.JOptionPane;
 public class Conexaobd {
     public Connection conebd() {
         Connection conn = null;
+        String localBD = "localhost";
+        String usuario = "root";
+        String senha = "Senai123";
         try {
-            String url = "jdbc:mysql://localhost:3306/rouff?user=root&password=Semprepea10";
-            conn = DriverManager.getConnection(url);
-            System.out.println("foi");
-            //JOptionPane.showMessageDialog(null,"foi");
+            String url = "jdbc:mysql://" + localBD + ":3306/rouff";
+            conn = DriverManager.getConnection(url, usuario, senha);
+            System.out.println("conexão OK!");
         }catch (SQLException erro) {
-            JOptionPane.showMessageDialog(null,"erro na conexaoDAO"+ erro.getMessage());
+            throw new RuntimeException("Ocorreu um problema na conexão com o BD", erro);
         }
             return conn;
     }
     
 }
+

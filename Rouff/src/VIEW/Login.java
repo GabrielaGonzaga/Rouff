@@ -4,13 +4,13 @@
  */
 package VIEW;
 
-import ConexaoDAO.AdotadorDAO;
-import DTO.AdotadorDTO;
+import ConexaoDAO.UserDAO;
+import DTO.UserDTO;
 import javax.swing.JOptionPane;
 
 /**
  *
- * @author gsabi
+ * @author gabi/sabino/diego
  */
 public class Login extends javax.swing.JFrame {
 
@@ -123,26 +123,27 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_txtEmail
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-         String nome, email;
+     String email, senha;
         
-        nome = txtEmail.getText();
-        email = txtPassword.getText();
+        email = txtEmail.getText();
+        senha = txtPassword.getText();
         
         try {
-            AdotadorDTO objadotadordto = new AdotadorDTO();
-            objadotadordto.setNome(nome);
+            UserDTO objadotadordto = new UserDTO();
             objadotadordto.setEmail(email);
+            objadotadordto.setSenha(senha);
 
-            AdotadorDAO objadotadordao = new AdotadorDAO();
-            objadotadordao.cadastrarAdotante(objadotadordto);
-            
-            boolean status = true ;
-             
-            if(status){
+            UserDAO objadotadordao = new UserDAO();
+
+            if(objadotadordao.login(objadotadordto)){
                 DashBoard dash = new DashBoard();
                 dispose();
                 dash.setVisible(true);
+                JOptionPane.showMessageDialog(null, "Login realizado com sucesso");    
             }
+            else{
+                JOptionPane.showMessageDialog(null, "Email ou senha incorretos tente novamente");
+            }      
         } catch (Exception  e) {
             JOptionPane.showMessageDialog(null, "Não foi possivel fazer login "+ e);
         }
