@@ -5,18 +5,20 @@
 package VIEW;
 
 import javax.swing.JPanel;
+import java.sql.*;
 
 /**
  *
  * @author Gabriela Gonzaga
  */
-public class frmDashBoard extends javax.swing.JFrame {
+public class DashBoard extends javax.swing.JFrame {
 
     /**
      * Creates new form frmLogin
      */
-    public frmDashBoard() {
+    public DashBoard() {
         initComponents();
+        
     }
 
     /**
@@ -329,21 +331,27 @@ public class frmDashBoard extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frmDashBoard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DashBoard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frmDashBoard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DashBoard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frmDashBoard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DashBoard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frmDashBoard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DashBoard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frmDashBoard().setVisible(true);
+                new DashBoard().setVisible(true);
             }
         });
     }
@@ -373,4 +381,36 @@ public class frmDashBoard extends javax.swing.JFrame {
     private void resetColor(JPanel[] jPanel, JPanel[] jPanel0) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+    
+    public void consulta(Connection con) {
+        try {
+          Statement stmt = con.createStatement();
+          ResultSet rs = stmt.executeQuery("select * from user");
+          while (rs.next()) {
+              System.out.println("Código RA: " + rs.getInt(1) + " - Nome: " 
+                      + rs.getString(2) + " - Email: " + rs.getString(3) + 
+                      " - Cod Cidade: " + rs.getInt(4));
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+    }
+    
+    
+    
+     public void insere (Connection con, String Nome){
+            try{
+                String sql = "INSERT INTO aluno(codigo, nome, email, codcidade) VALUES (?,?,?,?)";
+                PreparedStatement pstm = con.prepareStatement(sql);
+                String name = Nome;
+                pstm.setInt(1, 16);
+                pstm.setString(2, name);
+                pstm.setString(3, "nome@gmail.com");
+                pstm.setInt(4, 2);
+                pstm.execute();
+            }catch (Exception e){
+            System.out.println("erro ao inserir "+e);
+        }
+        }
 }
