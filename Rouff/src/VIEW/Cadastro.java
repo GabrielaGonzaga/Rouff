@@ -35,7 +35,6 @@ public class Cadastro extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         logo1 = new javax.swing.JLabel();
-        txtPassword = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         txtEmail = new javax.swing.JTextField();
         btnCadastro = new java.awt.Button();
@@ -44,6 +43,8 @@ public class Cadastro extends javax.swing.JFrame {
         txtNome = new javax.swing.JTextField();
         jSeparator4 = new javax.swing.JSeparator();
         jComboBox1 = new javax.swing.JComboBox<>();
+        txtPassword = new javax.swing.JPasswordField();
+        jToggleButton1 = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -63,17 +64,6 @@ public class Cadastro extends javax.swing.JFrame {
 
         logo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIEW/images/logo.png"))); // NOI18N
         side_pane.add(logo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 0, -1, 210));
-
-        txtPassword.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtPassword.setForeground(new java.awt.Color(102, 102, 102));
-        txtPassword.setText("Senha"); // NOI18N
-        txtPassword.setBorder(null);
-        txtPassword.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPassword(evt);
-            }
-        });
-        side_pane.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 380, 310, 30));
 
         jSeparator1.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator1.setAlignmentX(0.1F);
@@ -136,6 +126,17 @@ public class Cadastro extends javax.swing.JFrame {
         });
         side_pane.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 420, 330, 50));
 
+        txtPassword.setText("jPasswordField1");
+        side_pane.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 380, 310, 30));
+
+        jToggleButton1.setText("jToggleButton1");
+        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1ActionPerformed(evt);
+            }
+        });
+        side_pane.add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 380, 30, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -160,7 +161,12 @@ public class Cadastro extends javax.swing.JFrame {
         nome = txtNome.getText();
         email = txtEmail.getText();
         senha = txtPassword.getText();
-
+        
+        if(txtNome.getText() != "" && txtEmail.getText() != "" && txtPassword.getText() != ""){
+            btnCadastro.setEnabled(false);
+             JOptionPane.showMessageDialog(null, "Preencha todos os campos para prosseguir");
+        }
+       
         try {
             UserDTO objsUserDTO = new UserDTO();
             objsUserDTO.setNome(nome);
@@ -188,13 +194,17 @@ public class Cadastro extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEmail
 
-    private void txtPassword(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPassword
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPassword
-
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+        if( jToggleButton1.isEnabled()){
+            txtPassword.setEchoChar((char)0);
+        }else{
+            txtPassword.setEchoChar('*');
+        }
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -243,11 +253,12 @@ public class Cadastro extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JLabel logo;
     private javax.swing.JLabel logo1;
     private javax.swing.JPanel side_pane;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtNome;
-    private javax.swing.JTextField txtPassword;
+    private javax.swing.JPasswordField txtPassword;
     // End of variables declaration//GEN-END:variables
 }
