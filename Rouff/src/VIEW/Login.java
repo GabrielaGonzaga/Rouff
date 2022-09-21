@@ -14,6 +14,15 @@ import javax.swing.JOptionPane;
  */
 public class Login extends javax.swing.JFrame {
 
+    String UserId;
+
+    public String getUserId() {
+        return UserId;
+    }
+
+    public void setUserId(String UserId) {
+        this.UserId = UserId;
+    }
     /**
      * Creates new form CadAdotadorVIEW
      */
@@ -31,80 +40,91 @@ public class Login extends javax.swing.JFrame {
     private void initComponents() {
 
         side_pane = new javax.swing.JPanel();
-        logo = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        logo1 = new javax.swing.JLabel();
-        jSeparator2 = new javax.swing.JSeparator();
         txtPassword = new javax.swing.JTextField();
-        jSeparator1 = new javax.swing.JSeparator();
         txtEmail = new javax.swing.JTextField();
-        btnLogin = new java.awt.Button();
+        jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        logo2 = new javax.swing.JLabel();
+        logo1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         side_pane.setBackground(new java.awt.Color(255, 255, 255));
         side_pane.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        side_pane.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, -1, 210));
 
         jLabel8.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(46, 43, 39));
         jLabel8.setText("by: @gagonzaga, @petile & @gsabino");
-        side_pane.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 580, 360, 30));
+        side_pane.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 700, 190, 30));
 
-        jLabel9.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel9.setText("Seja Bem  vindo, Faça seu login");
-        side_pane.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 230, -1, -1));
+        jLabel9.setText("Login");
+        side_pane.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, -1, -1));
 
-        logo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIEW/images/logo.png"))); // NOI18N
-        side_pane.add(logo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, -1, 210));
-        side_pane.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 400, 330, 10));
-
+        txtPassword.setBackground(new java.awt.Color(243, 218, 202));
         txtPassword.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtPassword.setForeground(new java.awt.Color(102, 102, 102));
-        txtPassword.setText("Senha"); // NOI18N
+        txtPassword.setText("    ");
         txtPassword.setBorder(null);
         txtPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPassword(evt);
             }
         });
-        side_pane.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 370, 310, 30));
+        side_pane.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 390, 450, 47));
 
-        jSeparator1.setBackground(new java.awt.Color(0, 0, 0));
-        jSeparator1.setAlignmentX(0.1F);
-        jSeparator1.setPreferredSize(new java.awt.Dimension(0, 8));
-        side_pane.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 330, 330, 20));
-
+        txtEmail.setBackground(new java.awt.Color(243, 218, 202));
         txtEmail.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtEmail.setForeground(new java.awt.Color(102, 102, 102));
-        txtEmail.setText("Email");
+        txtEmail.setText("    ");
         txtEmail.setBorder(null);
         txtEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEmail(evt);
             }
         });
-        side_pane.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 300, 310, 30));
+        side_pane.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, 450, 47));
 
-        btnLogin.setBackground(new java.awt.Color(102, 102, 102));
-        btnLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnLogin.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
-        btnLogin.setForeground(new java.awt.Color(255, 255, 255));
-        btnLogin.setLabel("Login");
-        btnLogin.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setBackground(new java.awt.Color(141, 103, 71));
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Login");
+        jButton1.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLoginActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
-        side_pane.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 430, 330, 50));
+        side_pane.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 460, 240, 50));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText("Senha");
+        side_pane.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 360, -1, -1));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("Email");
+        side_pane.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 270, -1, -1));
+
+        logo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIEW/images/logo.png"))); // NOI18N
+        side_pane.add(logo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 40, 350, 160));
+
+        logo1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        logo1.setForeground(new java.awt.Color(255, 255, 255));
+        logo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIEW/images/login_background.png"))); // NOI18N
+        logo1.setText("    ");
+        side_pane.add(logo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1160, 730));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(side_pane, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(side_pane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -122,8 +142,8 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEmail
 
-    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-     String email, senha;
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String email, senha;
         
         email = txtEmail.getText();
         senha = txtPassword.getText();
@@ -134,20 +154,27 @@ public class Login extends javax.swing.JFrame {
             objadotadordto.setSenha(senha);
 
             UserDAO objadotadordao = new UserDAO();
-
-            if(objadotadordao.login(objadotadordto)){
+            objadotadordao.login(objadotadordto);
+            
+            setUserId(objadotadordao.id);
+        
+            if(objadotadordao.getRole().equals("ADM")){
                 DashBoard dash = new DashBoard();
                 dispose();
                 dash.setVisible(true);
                 JOptionPane.showMessageDialog(null, "Login realizado com sucesso");    
             }
-            else{
-                JOptionPane.showMessageDialog(null, "Email ou senha incorretos tente novamente");
-            }      
+            
+            if(objadotadordao.getRole().equals("USU")){
+                ShwAnimais dash = new ShwAnimais();
+                dispose();
+                dash.setVisible(true);
+                JOptionPane.showMessageDialog(null, "Login realizado com sucesso");    
+            }
         } catch (Exception  e) {
             JOptionPane.showMessageDialog(null, "Não foi possivel fazer login "+ e);
         }
-    }//GEN-LAST:event_btnLoginActionPerformed
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -176,6 +203,12 @@ public class Login extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -186,13 +219,13 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private java.awt.Button btnLogin;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JLabel logo;
     private javax.swing.JLabel logo1;
+    private javax.swing.JLabel logo2;
     private javax.swing.JPanel side_pane;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtPassword;

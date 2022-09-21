@@ -1,7 +1,15 @@
 package DTO;
 public class UserDTO {
     //atributos
-    private String senha, email, nome;
+    private String senha, email, nome, tipo;
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
 
     
     //metodos especiais

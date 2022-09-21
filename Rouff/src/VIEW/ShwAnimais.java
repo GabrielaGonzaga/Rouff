@@ -4,9 +4,11 @@
  */
 package VIEW;
 
+import ConexaoDAO.AdocoesDAO;
 import ConexaoDAO.AnimalDAO;
 import ConexaoDAO.Conexaobd;
 import ConexaoDAO.UserDAO;
+import DTO.AdocaoDTO;
 import DTO.AnimalDTO;
 import DTO.UserDTO;
 import java.awt.Color;
@@ -27,14 +29,14 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author gabi/sabino/diego
  */
-public class DashBoard extends javax.swing.JFrame {
+public class ShwAnimais extends javax.swing.JFrame {
 
     /**
      * Creates new form CadAdotadorVIEW
      */
-    public DashBoard() {
+    public ShwAnimais() {
         initComponents();
-        listarUsuarios();
+        listarAnimais();
         //listarUsua();
     }
 
@@ -50,15 +52,16 @@ public class DashBoard extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         side_pane1 = new javax.swing.JPanel();
-        logo2 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        javax.swing.JButton btnNovo = new javax.swing.JButton();
-        btnCadastro1 = new javax.swing.JButton();
-        txtNome = new javax.swing.JTextField();
+        logo2 = new javax.swing.JLabel();
+        tablePane = new javax.swing.JScrollPane();
+        tableAnimals = new javax.swing.JTable();
+        btnCadastro = new javax.swing.JButton();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        idInput = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        tablePane = new javax.swing.JScrollPane();
-        tableUsuarios = new javax.swing.JTable();
         logo1 = new javax.swing.JLabel();
 
         jLabel1.setBackground(new java.awt.Color(204, 0, 0));
@@ -79,49 +82,69 @@ public class DashBoard extends javax.swing.JFrame {
 
         side_pane1.setBackground(new java.awt.Color(255, 255, 255));
         side_pane1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        side_pane1.add(logo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, -1, 210));
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel12.setText("DashBoard");
-        side_pane1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 290, -1));
+        jLabel12.setText("Disponíveis");
+        side_pane1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 250, -1));
+        side_pane1.add(logo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, -1, 210));
 
-        btnNovo.setBackground(new java.awt.Color(223, 151, 107));
-        btnNovo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnNovo.setForeground(new java.awt.Color(255, 255, 255));
-        btnNovo.setText("Novo Animal");
-        btnNovo.setToolTipText("");
-        btnNovo.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        btnNovo.addActionListener(new java.awt.event.ActionListener() {
+        tablePane.setBackground(new java.awt.Color(62, 120, 198));
+        tablePane.setForeground(new java.awt.Color(204, 204, 0));
+
+        tableAnimals.setBackground(new java.awt.Color(255, 255, 255));
+        tableAnimals.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        tableAnimals.setForeground(new java.awt.Color(51, 51, 51));
+        tableAnimals.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "id", "Animal", "Adotante", "status"
+            }
+        ));
+        tableAnimals.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
+        tableAnimals.setRowHeight(30);
+        tablePane.setViewportView(tableAnimals);
+
+        side_pane1.add(tablePane, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 130, 730, 350));
+
+        btnCadastro.setBackground(new java.awt.Color(141, 103, 71));
+        btnCadastro.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnCadastro.setForeground(new java.awt.Color(255, 255, 255));
+        btnCadastro.setText("Solicitar Adoção");
+        btnCadastro.setToolTipText("");
+        btnCadastro.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        btnCadastro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNovoActionPerformed(evt);
+                btnCadastroActionPerformed(evt);
             }
         });
-        side_pane1.add(btnNovo, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 70, 190, 50));
+        side_pane1.add(btnCadastro, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 570, 260, 50));
 
-        btnCadastro1.setBackground(new java.awt.Color(141, 103, 71));
-        btnCadastro1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnCadastro1.setForeground(new java.awt.Color(255, 255, 255));
-        btnCadastro1.setText("Aprovar");
-        btnCadastro1.setToolTipText("");
-        btnCadastro1.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        btnCadastro1.addActionListener(new java.awt.event.ActionListener() {
+        jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel13.setText("Animais");
+        side_pane1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 170, -1));
+
+        jLabel8.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(46, 43, 39));
+        jLabel8.setText("by: @gagonzaga, @petile & @gsabino");
+        side_pane1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 700, 190, 30));
+
+        idInput.setBackground(new java.awt.Color(243, 218, 202));
+        idInput.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        idInput.setForeground(new java.awt.Color(102, 102, 102));
+        idInput.setBorder(null);
+        idInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCadastro1ActionPerformed(evt);
+                idInput(evt);
             }
         });
-        side_pane1.add(btnCadastro1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 630, 260, 50));
-
-        txtNome.setBackground(new java.awt.Color(243, 218, 202));
-        txtNome.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtNome.setForeground(new java.awt.Color(102, 102, 102));
-        txtNome.setBorder(null);
-        txtNome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNome(evt);
-            }
-        });
-        side_pane1.add(txtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 630, 430, 47));
+        side_pane1.add(idInput, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 570, 430, 47));
 
         jPanel4.setBackground(new java.awt.Color(243, 218, 202));
 
@@ -136,39 +159,16 @@ public class DashBoard extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        side_pane1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 630, 90, 47));
+        side_pane1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 570, 90, 47));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setText("Id da adoção");
-        side_pane1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 600, -1, -1));
-
-        tablePane.setBackground(new java.awt.Color(62, 120, 198));
-        tablePane.setForeground(new java.awt.Color(204, 204, 0));
-
-        tableUsuarios.setBackground(new java.awt.Color(255, 255, 255));
-        tableUsuarios.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        tableUsuarios.setForeground(new java.awt.Color(51, 51, 51));
-        tableUsuarios.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "id", "Animal", "Adotante", "status"
-            }
-        ));
-        tableUsuarios.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
-        tableUsuarios.setRowHeight(30);
-        tablePane.setViewportView(tableUsuarios);
-
-        side_pane1.add(tablePane, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 1030, 380));
+        jLabel4.setText("Id do Animal");
+        side_pane1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 540, -1, -1));
 
         logo1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         logo1.setForeground(new java.awt.Color(255, 255, 255));
-        logo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIEW/images/dashboard_bkgd.png"))); // NOI18N
+        logo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIEW/images/shwAni_bkgd.png"))); // NOI18N
         logo1.setText("    ");
         side_pane1.add(logo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -30, 1160, 790));
 
@@ -186,54 +186,69 @@ public class DashBoard extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
-        CadAnimais dash = new CadAnimais();
-        dispose();
-        dash.setVisible(true); 
-    }//GEN-LAST:event_btnNovoActionPerformed
+    private void btnCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroActionPerformed
+        String id;
 
-    private void btnCadastro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastro1ActionPerformed
+        id = idInput.getText();
+        
+        System.out.println(id);
+        
+        Login usu = new Login();
+        
+        try {
+            AdocaoDTO objAdocaoDTO= new AdocaoDTO();
+            
+            objAdocaoDTO.setId_animal(id);
+            objAdocaoDTO.setId_adotante(usu.getUserId());
+            
+            System.out.println(usu.getUserId());
+
+            AdocoesDAO obj = new AdocoesDAO();
+            obj.cadastrar(objAdocaoDTO);
+      
+        listarAnimais();
+
+        } catch (Exception  e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_btnCadastroActionPerformed
+
+    private void idInput(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idInput
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnCadastro1ActionPerformed
+    }//GEN-LAST:event_idInput
 
-    private void txtNome(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNome
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNome
-
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DashBoard().setVisible(true);
+                new ShwAnimais().setVisible(true);
             }
         });
     }
 
-  private void listarUsuarios() {
+  private void listarAnimais() {
         try {
         Conexaobd conn = new Conexaobd();
-        UserDAO obj = new UserDAO();
+        AnimalDAO obj = new AnimalDAO();
 
-        DefaultTableModel model = (DefaultTableModel) tableUsuarios.getModel();
-        
-        model.setNumRows(0);
+        DefaultTableModel model = (DefaultTableModel) tableAnimals.getModel();
 
-        ArrayList<UserDTO> lista = obj.listarUsuarios(conn.conebd());
+        ArrayList<AnimalDTO> lista = obj.listarAnimais(conn.conebd());
         List<String[]> sqlTable = new ArrayList<String[]>();
 
         for (int num = 0; num < lista.size(); num++) {
             model.addRow(new Object[]{
             lista.get(num).getNome(),
-            lista.get(num).getEmail(),
+            lista.get(num).getRaca(),
+            lista.get(num).getTipo(),
+            lista.get(num).getDescricao()
             });
         }
-        tableUsuarios.setGridColor(Color.decode("#8D6747"));
-        tableUsuarios.getTableHeader().setBackground(Color.decode("#8D6747"));
-        tableUsuarios.getTableHeader().setForeground(Color.white);
-        tableUsuarios.getTableHeader().setFont(new Font("Segoe UI", Font.PLAIN, 18));
+        
+        tableAnimals.setGridColor(Color.decode("#8D6747"));
+        tableAnimals.getTableHeader().setBackground(Color.decode("#8D6747"));
+        tableAnimals.getTableHeader().setForeground(Color.white);
+        tableAnimals.getTableHeader().setFont(new Font("Segoe UI", Font.PLAIN, 18));
         
         JList list = new JList(sqlTable.toArray());
         list.setCellRenderer(new ListCellRenderer() {
@@ -250,17 +265,19 @@ public class DashBoard extends javax.swing.JFrame {
         }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCadastro1;
+    private javax.swing.JButton btnCadastro;
+    private javax.swing.JTextField idInput;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JLabel logo1;
     private javax.swing.JLabel logo2;
     private javax.swing.JPanel side_pane1;
+    private javax.swing.JTable tableAnimals;
     private javax.swing.JScrollPane tablePane;
-    private javax.swing.JTable tableUsuarios;
-    private javax.swing.JTextField txtNome;
     // End of variables declaration//GEN-END:variables
 }

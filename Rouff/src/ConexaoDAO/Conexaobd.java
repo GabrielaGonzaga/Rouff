@@ -9,13 +9,15 @@ public class Conexaobd {
         Connection conn = null;
         String localBD = "localhost";
         String usuario = "root";
-        String senha = "Senai123";
+        String senha = "senai";
         try {
             String url = "jdbc:mysql://" + localBD + ":3306/rouff";
             conn = DriverManager.getConnection(url, usuario, senha);
             System.out.println("conexão OK!");
         }catch (SQLException erro) {
+            System.out.print(erro);
             throw new RuntimeException("Ocorreu um problema na conexão com o BD", erro);
+            
         }
             return conn;
     }

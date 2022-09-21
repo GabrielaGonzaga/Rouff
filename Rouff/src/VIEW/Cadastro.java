@@ -33,18 +33,23 @@ public class Cadastro extends javax.swing.JFrame {
         side_pane = new javax.swing.JPanel();
         logo = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
         logo1 = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
-        txtEmail = new javax.swing.JTextField();
-        btnCadastro = new java.awt.Button();
-        jLabel10 = new javax.swing.JLabel();
-        jSeparator3 = new javax.swing.JSeparator();
+        txtPassword = new javax.swing.JTextField();
         txtNome = new javax.swing.JTextField();
-        jSeparator4 = new javax.swing.JSeparator();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        txtPassword = new javax.swing.JPasswordField();
+        jComboBox = new javax.swing.JComboBox<>();
+        logo2 = new javax.swing.JLabel();
         jToggleButton1 = new javax.swing.JToggleButton();
+        btnCadastro = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        txtEmail = new javax.swing.JTextField();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -55,97 +60,174 @@ public class Cadastro extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(46, 43, 39));
         jLabel8.setText("by: @gagonzaga, @petile & @gsabino");
-        side_pane.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 580, 360, 30));
+        side_pane.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 700, 190, 30));
 
-        jLabel9.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel9.setText("Preencha os campos para se cadastrar");
-        side_pane.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 240, -1, -1));
+        logo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIEW/images/logo@1x.png"))); // NOI18N
+        side_pane.add(logo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, 220, 110));
 
-        logo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIEW/images/logo.png"))); // NOI18N
-        side_pane.add(logo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 0, -1, 210));
-
-        jSeparator1.setBackground(new java.awt.Color(0, 0, 0));
-        jSeparator1.setAlignmentX(0.1F);
-        jSeparator1.setPreferredSize(new java.awt.Dimension(0, 8));
-        side_pane.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 360, 330, 20));
-
-        txtEmail.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtEmail.setForeground(new java.awt.Color(102, 102, 102));
-        txtEmail.setText("Email");
-        txtEmail.setBorder(null);
-        txtEmail.addActionListener(new java.awt.event.ActionListener() {
+        txtPassword.setBackground(new java.awt.Color(243, 218, 202));
+        txtPassword.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtPassword.setForeground(new java.awt.Color(102, 102, 102));
+        txtPassword.setToolTipText("");
+        txtPassword.setBorder(null);
+        txtPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEmail(evt);
+                txtPassword(evt);
             }
         });
-        side_pane.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 330, 310, 30));
+        side_pane.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 390, 440, 47));
 
-        btnCadastro.setBackground(new java.awt.Color(102, 102, 102));
-        btnCadastro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnCadastro.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
-        btnCadastro.setForeground(new java.awt.Color(255, 255, 255));
-        btnCadastro.setLabel("Login");
-        btnCadastro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCadastroActionPerformed(evt);
-            }
-        });
-        side_pane.add(btnCadastro, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 480, 330, 50));
-
-        jLabel10.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel10.setText("Seja Bem vindo(a),");
-        side_pane.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, -1, -1));
-
-        jSeparator3.setBackground(new java.awt.Color(0, 0, 0));
-        jSeparator3.setAlignmentX(0.1F);
-        jSeparator3.setPreferredSize(new java.awt.Dimension(0, 8));
-        side_pane.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 310, 330, 20));
-
+        txtNome.setBackground(new java.awt.Color(243, 218, 202));
         txtNome.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtNome.setForeground(new java.awt.Color(102, 102, 102));
-        txtNome.setText("Nome");
+        txtNome.setToolTipText("    ");
         txtNome.setBorder(null);
         txtNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNome(evt);
             }
         });
-        side_pane.add(txtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 280, 310, 30));
-        side_pane.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 410, 330, 10));
+        side_pane.add(txtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 220, 430, 47));
 
-        jComboBox1.setBackground(new java.awt.Color(255, 255, 255));
-        jComboBox1.setForeground(new java.awt.Color(102, 102, 102));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Adotante", "ADM" }));
-        jComboBox1.setBorder(null);
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        jComboBox.setBackground(new java.awt.Color(255, 255, 255));
+        jComboBox.setForeground(new java.awt.Color(102, 102, 102));
+        jComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Adotante", "Administrador" }));
+        jComboBox.setBorder(null);
+        jComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                jComboBoxActionPerformed(evt);
             }
         });
-        side_pane.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 420, 330, 50));
+        side_pane.add(jComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 480, 450, 50));
 
-        txtPassword.setText("jPasswordField1");
-        side_pane.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 380, 310, 30));
+        logo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIEW/images/eye.png"))); // NOI18N
+        side_pane.add(logo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 410, 40, 30));
 
+        jToggleButton1.setBackground(new java.awt.Color(255, 255, 255));
+        jToggleButton1.setForeground(new java.awt.Color(255, 255, 255));
         jToggleButton1.setText("jToggleButton1");
+        jToggleButton1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jToggleButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jToggleButton1ActionPerformed(evt);
             }
         });
-        side_pane.add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 380, 30, -1));
+        side_pane.add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 398, 40, 40));
+
+        btnCadastro.setBackground(new java.awt.Color(141, 103, 71));
+        btnCadastro.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnCadastro.setForeground(new java.awt.Color(255, 255, 255));
+        btnCadastro.setText("Cadastre-se");
+        btnCadastro.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        btnCadastro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadastroActionPerformed(evt);
+            }
+        });
+        side_pane.add(btnCadastro, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 560, 240, 50));
+
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel12.setText("Cadastro");
+        side_pane.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 110, -1, -1));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("Voce é?");
+        side_pane.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 460, -1, -1));
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("Email");
+        side_pane.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 270, -1, -1));
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("Nome");
+        side_pane.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 190, -1, -1));
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setText("Senha");
+        side_pane.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 360, -1, -1));
+
+        txtEmail.setBackground(new java.awt.Color(243, 218, 202));
+        txtEmail.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtEmail.setForeground(new java.awt.Color(102, 102, 102));
+        txtEmail.setBorder(null);
+        txtEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEmail(evt);
+            }
+        });
+        side_pane.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 300, 430, 47));
+
+        jPanel3.setBackground(new java.awt.Color(243, 218, 202));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 43, Short.MAX_VALUE)
+        );
+
+        side_pane.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 392, -1, 43));
+        jPanel3.getAccessibleContext().setAccessibleName("");
+
+        jPanel5.setBackground(new java.awt.Color(243, 218, 202));
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 110, Short.MAX_VALUE)
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 43, Short.MAX_VALUE)
+        );
+
+        side_pane.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 302, -1, -1));
+
+        jPanel4.setBackground(new java.awt.Color(243, 218, 202));
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 110, Short.MAX_VALUE)
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 43, Short.MAX_VALUE)
+        );
+
+        side_pane.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 222, 110, 43));
+
+        background.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        background.setForeground(new java.awt.Color(255, 255, 255));
+        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIEW/images/cadastro_background.png"))); // NOI18N
+        background.setText("    ");
+        side_pane.add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1160, 730));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(side_pane, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(side_pane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(side_pane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(side_pane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -155,16 +237,49 @@ public class Cadastro extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNome
 
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+        /*if( jToggleButton1.isEnabled()){
+            txtPassword.setEchoChar((char)0);
+        }if( jToggleButton1.isDisplayable()){
+            txtPassword.setEchoChar('*');
+        }else{
+            txtPassword.setEchoChar('*');
+        }
+        
+         if(txtNome.getText() != "" && txtEmail.getText() != "" && txtPassword.getText() != ""){
+            btnCadastro.setEnabled(false);
+             JOptionPane.showMessageDialog(null, "Preencha todos os campos para prosseguir");
+        }
+        
+        
+        */
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
+
     private void btnCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroActionPerformed
-        String email, senha, nome;
+        String email, senha, nome, tipo, role = null;
 
         nome = txtNome.getText();
         email = txtEmail.getText();
         senha = txtPassword.getText();
+        tipo = jComboBox.getSelectedItem().toString();
         
-        if(txtNome.getText() != "" && txtEmail.getText() != "" && txtPassword.getText() != ""){
-            btnCadastro.setEnabled(false);
-             JOptionPane.showMessageDialog(null, "Preencha todos os campos para prosseguir");
+        if(nome == "" || email == "" || senha == ""){
+            JOptionPane.showMessageDialog(null, "Preencha todos os campos para prosseguir");
+        }
+        
+        if(tipo == "Adotante"){
+            role = "USU";
+        };
+        
+        if(tipo == "Administrador"){
+            try{
+                String pwd = JOptionPane.showInputDialog("Digite a senha para cadastro de ADM");
+                if(pwd != null){
+                  role = "ADM";
+                }
+            }catch (Exception  e) {
+                JOptionPane.showMessageDialog(null, "Senha para cadastro de ADM incorreta");
+            }
         }
        
         try {
@@ -172,39 +287,32 @@ public class Cadastro extends javax.swing.JFrame {
             objsUserDTO.setNome(nome);
             objsUserDTO.setEmail(email);
             objsUserDTO.setSenha(senha);
+            objsUserDTO.setTipo(role);
 
             UserDAO objUser = new UserDAO();
             objUser.cadastrar(objsUserDTO);
             
-            boolean status = true;
+            Login dash = new Login();
+            dispose();
+            dash.setVisible(true);
+            JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso, faça seu login");
 
-            if(status){
-                Login dash = new Login();
-                dispose();
-                dash.setVisible(true);
-                JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso, faça seu login");
-            }
-            
         } catch (Exception  e) {
             JOptionPane.showMessageDialog(null, "Um erro aconteceu revise os campos e tente novamente");
         }
     }//GEN-LAST:event_btnCadastroActionPerformed
 
+    private void jComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxActionPerformed
+
+    }//GEN-LAST:event_jComboBoxActionPerformed
+
+    private void txtPassword(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPassword
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPassword
+
     private void txtEmail(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmail
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEmail
-
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
-
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        if( jToggleButton1.isEnabled()){
-            txtPassword.setEchoChar((char)0);
-        }else{
-            txtPassword.setEchoChar('*');
-        }
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -235,6 +343,18 @@ public class Cadastro extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -245,20 +365,25 @@ public class Cadastro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private java.awt.Button btnCadastro;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel background;
+    private javax.swing.JButton btnCadastro;
+    private javax.swing.JComboBox<String> jComboBox;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JLabel logo;
     private javax.swing.JLabel logo1;
+    private javax.swing.JLabel logo2;
     private javax.swing.JPanel side_pane;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtNome;
-    private javax.swing.JPasswordField txtPassword;
+    private javax.swing.JTextField txtPassword;
     // End of variables declaration//GEN-END:variables
 }
