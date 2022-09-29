@@ -35,22 +35,7 @@ public class AnimalDAO {
             JOptionPane.showMessageDialog(null, "Não foi possivel Cadastrar "+ erro);
         }
     }
-    
-   
-    public void deletarConta(UserDTO objadotadordto){
-        String sql = "DELETE FROM usuarios WHERE id = ?;";
-        conn = new Conexaobd().conebd();
-    
-        try {
-            pstm = conn.prepareStatement(sql);
-            //pstm.setString(1, getId());
-            pstm.execute();
-            pstm.close();
-        } catch (SQLException erro) {
-            JOptionPane.showMessageDialog(null, "Não foi possivel listar Usuários "+ erro);
-        }
-    }
-     
+      
     
     public ArrayList<AnimalDTO> listarAnimais(Connection con){
         String sql = "SELECT id, nome, tipo, raca, descricao FROM animal";
@@ -65,6 +50,7 @@ public class AnimalDAO {
                 AnimalDTO obj = new AnimalDTO();
 
                 rs.getString("id");
+                obj.setId(rs.getString("id"));
                 obj.setNome(rs.getString("nome"));
                 obj.setTipo(rs.getString("tipo"));
                 obj.setRaca(rs.getString("raca"));

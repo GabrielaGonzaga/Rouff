@@ -9,7 +9,15 @@ package DTO;
  * @author Gabriela Gonzaga
  */
 public class AnimalDTO {
-    String raca, nome, tipo, descricao;
+    String raca, nome, tipo, descricao, id;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getRaca() {
         return raca;

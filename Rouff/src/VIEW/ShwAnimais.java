@@ -62,6 +62,7 @@ public class ShwAnimais extends javax.swing.JFrame {
         idInput = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
+        javax.swing.JButton Sair = new javax.swing.JButton();
         logo1 = new javax.swing.JLabel();
 
         jLabel1.setBackground(new java.awt.Color(204, 0, 0));
@@ -97,13 +98,10 @@ public class ShwAnimais extends javax.swing.JFrame {
         tableAnimals.setForeground(new java.awt.Color(51, 51, 51));
         tableAnimals.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "id", "Animal", "Adotante", "status"
+                "Id", "Animal", "Tipo", "Raça", "Descrição"
             }
         ));
         tableAnimals.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
@@ -166,6 +164,19 @@ public class ShwAnimais extends javax.swing.JFrame {
         jLabel4.setText("Id do Animal");
         side_pane1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 540, -1, -1));
 
+        Sair.setBackground(new java.awt.Color(255, 51, 51));
+        Sair.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        Sair.setForeground(new java.awt.Color(255, 255, 255));
+        Sair.setText("Sair");
+        Sair.setToolTipText("");
+        Sair.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        Sair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SairActionPerformed(evt);
+            }
+        });
+        side_pane1.add(Sair, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 80, 50, -1));
+
         logo1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         logo1.setForeground(new java.awt.Color(255, 255, 255));
         logo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIEW/images/shwAni_bkgd.png"))); // NOI18N
@@ -199,15 +210,18 @@ public class ShwAnimais extends javax.swing.JFrame {
             AdocaoDTO objAdocaoDTO= new AdocaoDTO();
             
             objAdocaoDTO.setId_animal(id);
-            objAdocaoDTO.setId_adotante(usu.getUserId());
+            objAdocaoDTO.setId_adotante("1");
             
             System.out.println(usu.getUserId());
 
             AdocoesDAO obj = new AdocoesDAO();
             obj.cadastrar(objAdocaoDTO);
-      
-        listarAnimais();
+            
+            Sucesso dash = new Sucesso();
+            dispose();
+            dash.setVisible(true);
 
+      
         } catch (Exception  e) {
             JOptionPane.showMessageDialog(null, e);
         }
@@ -216,6 +230,17 @@ public class ShwAnimais extends javax.swing.JFrame {
     private void idInput(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idInput
         // TODO add your handling code here:
     }//GEN-LAST:event_idInput
+
+    private void SairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SairActionPerformed
+        Login dash = new Login();
+        dispose();
+        dash.setVisible(true);
+
+        UserDAO obj = new UserDAO();
+        obj.logout();
+
+        JOptionPane.showMessageDialog(null, "Logout realizado com sucesso");
+    }//GEN-LAST:event_SairActionPerformed
 
     public static void main(String args[]) {        
         /* Create and display the form */
@@ -238,10 +263,11 @@ public class ShwAnimais extends javax.swing.JFrame {
 
         for (int num = 0; num < lista.size(); num++) {
             model.addRow(new Object[]{
-            lista.get(num).getNome(),
-            lista.get(num).getRaca(),
-            lista.get(num).getTipo(),
-            lista.get(num).getDescricao()
+                lista.get(num).getId(),
+                lista.get(num).getNome(),
+                lista.get(num).getRaca(),
+                lista.get(num).getTipo(),
+                lista.get(num).getDescricao()
             });
         }
         

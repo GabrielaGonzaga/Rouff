@@ -63,6 +63,7 @@ public class UserDAO {
                 setId(rs.getString("id"));
                 System.out.println(rs.getString("id"));
                 setRole(rs.getString("tipo"));
+                System.out.println(rs.getString("tipo"));
                 String m = rs.getString("tipo").toString();
                 System.out.println(m);
                 
@@ -77,7 +78,7 @@ public class UserDAO {
         }
     }
     
-    public void logout(UserDTO objadotadordto){
+    public void logout(){
         setId(null);
      }
     

@@ -1,0 +1,37 @@
+CREATE DATABASE ROUFF;
+DROP DATABASE ROUFF;
+USE ROUFF;
+
+SELECT * FROM usuario;
+
+create table usuario(
+id 			int PRIMARY KEY AUTO_INCREMENT,
+nome 		varchar (40) NOT NULL,
+email 		varchar(40),
+senha 		varchar(20),
+tipo 		enum('ADM','USU') not null
+);
+
+create table animal(
+id 			int PRIMARY KEY AUTO_INCREMENT,
+nome 		varchar(40),
+tipo 		enum('Gato','Cachorro') not null,
+raca 		varchar(30),
+descricao 	varchar(150)
+);
+
+create table adocoes(
+id 			int auto_increment PRIMARY KEY,
+id_animal 	int,
+id_adotante int,
+status 		bool,
+FOREIGN KEY (id_adotante) REFERENCES usuario (id),
+FOREIGN KEY (id_animal) REFERENCES animal (id)
+);
+
+select * from usuario;
+select * from animal;
+select * from adocoes;
+drop table usuario ;
+drop table animal ;
+drop table adocoes ;

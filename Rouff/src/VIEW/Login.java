@@ -4,16 +4,30 @@
  */
 package VIEW;
 
+import ConexaoDAO.AnimalDAO;
+import ConexaoDAO.Conexaobd;
 import ConexaoDAO.UserDAO;
+import DTO.AnimalDTO;
 import DTO.UserDTO;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Font;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.ListCellRenderer;
+import javax.swing.table.DefaultTableModel;
+
 
 /**
  *
  * @author gabi/sabino/diego
  */
 public class Login extends javax.swing.JFrame {
-
     String UserId;
 
     public String getUserId() {
@@ -28,6 +42,7 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
+        //listarUsua();
     }
 
     /**
@@ -39,55 +54,114 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        side_pane = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        txtPassword = new javax.swing.JTextField();
-        txtEmail = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        side_pane1 = new javax.swing.JPanel();
         logo2 = new javax.swing.JLabel();
+        txtPassword = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jPanel8 = new javax.swing.JPanel();
+        txtEmail = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jPanel7 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        javax.swing.JButton Sair = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
         logo1 = new javax.swing.JLabel();
 
+        jLabel1.setBackground(new java.awt.Color(204, 0, 0));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(102, 102, 102));
 
-        side_pane.setBackground(new java.awt.Color(255, 255, 255));
-        side_pane.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel8.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(46, 43, 39));
-        jLabel8.setText("by: @gagonzaga, @petile & @gsabino");
-        side_pane.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 700, 190, 30));
-
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel9.setText("Login");
-        side_pane.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, -1, -1));
+        side_pane1.setBackground(new java.awt.Color(255, 255, 255));
+        side_pane1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        side_pane1.add(logo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, -1, 210));
 
         txtPassword.setBackground(new java.awt.Color(243, 218, 202));
         txtPassword.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtPassword.setForeground(new java.awt.Color(102, 102, 102));
-        txtPassword.setText("    ");
         txtPassword.setBorder(null);
         txtPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPassword(evt);
             }
         });
-        side_pane.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 390, 450, 47));
+        side_pane1.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 390, 430, 47));
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("Não possui uma conta? ");
+        side_pane1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 610, -1, -1));
+
+        jLabel8.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(46, 43, 39));
+        jLabel8.setText("by: @gagonzaga, @petile & @gsabino");
+        side_pane1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 700, 190, 30));
+
+        jPanel8.setBackground(new java.awt.Color(243, 218, 202));
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 90, Short.MAX_VALUE)
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 47, Short.MAX_VALUE)
+        );
+
+        side_pane1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 300, 90, 47));
 
         txtEmail.setBackground(new java.awt.Color(243, 218, 202));
         txtEmail.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtEmail.setForeground(new java.awt.Color(102, 102, 102));
-        txtEmail.setText("    ");
         txtEmail.setBorder(null);
         txtEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEmail(evt);
             }
         });
-        side_pane.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, 450, 47));
+        side_pane1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 300, 430, 47));
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel9.setText("Login");
+        side_pane1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, -1, -1));
+
+        jPanel7.setBackground(new java.awt.Color(243, 218, 202));
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 90, Short.MAX_VALUE)
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 47, Short.MAX_VALUE)
+        );
+
+        side_pane1.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 390, 90, 47));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("Email");
+        side_pane1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 270, -1, -1));
 
         jButton1.setBackground(new java.awt.Color(141, 103, 71));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -99,36 +173,41 @@ public class Login extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        side_pane.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 460, 240, 50));
+        side_pane1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 460, 250, 50));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Senha");
-        side_pane.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 360, -1, -1));
+        Sair.setBackground(new java.awt.Color(162, 136, 115));
+        Sair.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        Sair.setForeground(new java.awt.Color(255, 255, 255));
+        Sair.setText("Cadastre-se");
+        Sair.setToolTipText("");
+        Sair.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        Sair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SairActionPerformed(evt);
+            }
+        });
+        side_pane1.add(Sair, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 640, 240, 50));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("Email");
-        side_pane.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 270, -1, -1));
-
-        logo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIEW/images/logo.png"))); // NOI18N
-        side_pane.add(logo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 40, 350, 160));
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setText("Senha");
+        side_pane1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 360, -1, -1));
 
         logo1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         logo1.setForeground(new java.awt.Color(255, 255, 255));
         logo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIEW/images/login_background.png"))); // NOI18N
         logo1.setText("    ");
-        side_pane.add(logo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1160, 730));
+        side_pane1.add(logo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1160, 730));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(side_pane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(side_pane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(side_pane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(side_pane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -138,16 +217,12 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPassword
 
-    private void txtEmail(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmail
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEmail
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String email, senha;
-        
+
         email = txtEmail.getText();
         senha = txtPassword.getText();
-        
+
         try {
             UserDTO objadotadordto = new UserDTO();
             objadotadordto.setEmail(email);
@@ -155,61 +230,39 @@ public class Login extends javax.swing.JFrame {
 
             UserDAO objadotadordao = new UserDAO();
             objadotadordao.login(objadotadordto);
-            
+
             setUserId(objadotadordao.id);
-        
+            System.out.println(objadotadordao.getRole());
+
             if(objadotadordao.getRole().equals("ADM")){
                 DashBoard dash = new DashBoard();
                 dispose();
                 dash.setVisible(true);
-                JOptionPane.showMessageDialog(null, "Login realizado com sucesso");    
+                JOptionPane.showMessageDialog(null, "Login realizado com sucesso");
             }
-            
+
             if(objadotadordao.getRole().equals("USU")){
                 ShwAnimais dash = new ShwAnimais();
                 dispose();
                 dash.setVisible(true);
-                JOptionPane.showMessageDialog(null, "Login realizado com sucesso");    
+                JOptionPane.showMessageDialog(null, "Login realizado com sucesso");
             }
         } catch (Exception  e) {
             JOptionPane.showMessageDialog(null, "Não foi possivel fazer login "+ e);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
+    private void txtEmail(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmail
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEmail
 
+    private void SairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SairActionPerformed
+        Cadastro dash = new Cadastro();
+        dispose();
+        dash.setVisible(true);
+    }//GEN-LAST:event_SairActionPerformed
+
+    public static void main(String args[]) {        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -222,11 +275,16 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
     private javax.swing.JLabel logo1;
     private javax.swing.JLabel logo2;
-    private javax.swing.JPanel side_pane;
+    private javax.swing.JPanel side_pane1;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtPassword;
     // End of variables declaration//GEN-END:variables

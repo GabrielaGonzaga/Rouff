@@ -4,9 +4,11 @@
  */
 package VIEW;
 
+import ConexaoDAO.AdocoesDAO;
 import ConexaoDAO.AnimalDAO;
 import ConexaoDAO.Conexaobd;
 import ConexaoDAO.UserDAO;
+import DTO.AdocaoDTO;
 import DTO.AnimalDTO;
 import DTO.UserDTO;
 import java.awt.Color;
@@ -34,7 +36,7 @@ public class DashBoard extends javax.swing.JFrame {
      */
     public DashBoard() {
         initComponents();
-        listarUsuarios();
+        listarAdocoes();
         //listarUsua();
     }
 
@@ -52,13 +54,15 @@ public class DashBoard extends javax.swing.JFrame {
         side_pane1 = new javax.swing.JPanel();
         logo2 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        javax.swing.JButton btnNovo = new javax.swing.JButton();
+        javax.swing.JButton Sair = new javax.swing.JButton();
         btnCadastro1 = new javax.swing.JButton();
-        txtNome = new javax.swing.JTextField();
+        txtId = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
+        opStatus = new javax.swing.JComboBox<>();
         tablePane = new javax.swing.JScrollPane();
-        tableUsuarios = new javax.swing.JTable();
+        tableAdocoes = new javax.swing.JTable();
+        javax.swing.JButton btnNovo1 = new javax.swing.JButton();
         logo1 = new javax.swing.JLabel();
 
         jLabel1.setBackground(new java.awt.Color(204, 0, 0));
@@ -84,25 +88,25 @@ public class DashBoard extends javax.swing.JFrame {
         jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setText("DashBoard");
-        side_pane1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 290, -1));
+        side_pane1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, 290, -1));
 
-        btnNovo.setBackground(new java.awt.Color(223, 151, 107));
-        btnNovo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnNovo.setForeground(new java.awt.Color(255, 255, 255));
-        btnNovo.setText("Novo Animal");
-        btnNovo.setToolTipText("");
-        btnNovo.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        btnNovo.addActionListener(new java.awt.event.ActionListener() {
+        Sair.setBackground(new java.awt.Color(255, 51, 51));
+        Sair.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        Sair.setForeground(new java.awt.Color(255, 255, 255));
+        Sair.setText("Sair");
+        Sair.setToolTipText("");
+        Sair.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        Sair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNovoActionPerformed(evt);
+                SairActionPerformed(evt);
             }
         });
-        side_pane1.add(btnNovo, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 70, 190, 50));
+        side_pane1.add(Sair, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 30, 50, -1));
 
         btnCadastro1.setBackground(new java.awt.Color(141, 103, 71));
         btnCadastro1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnCadastro1.setForeground(new java.awt.Color(255, 255, 255));
-        btnCadastro1.setText("Aprovar");
+        btnCadastro1.setText("Atualizar Status");
         btnCadastro1.setToolTipText("");
         btnCadastro1.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         btnCadastro1.addActionListener(new java.awt.event.ActionListener() {
@@ -112,16 +116,16 @@ public class DashBoard extends javax.swing.JFrame {
         });
         side_pane1.add(btnCadastro1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 630, 260, 50));
 
-        txtNome.setBackground(new java.awt.Color(243, 218, 202));
-        txtNome.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtNome.setForeground(new java.awt.Color(102, 102, 102));
-        txtNome.setBorder(null);
-        txtNome.addActionListener(new java.awt.event.ActionListener() {
+        txtId.setBackground(new java.awt.Color(243, 218, 202));
+        txtId.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtId.setForeground(new java.awt.Color(102, 102, 102));
+        txtId.setBorder(null);
+        txtId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNome(evt);
+                txtId(evt);
             }
         });
-        side_pane1.add(txtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 630, 430, 47));
+        side_pane1.add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 630, 200, 47));
 
         jPanel4.setBackground(new java.awt.Color(243, 218, 202));
 
@@ -143,28 +147,51 @@ public class DashBoard extends javax.swing.JFrame {
         jLabel4.setText("Id da adoção");
         side_pane1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 600, -1, -1));
 
+        opStatus.setBackground(new java.awt.Color(255, 255, 255));
+        opStatus.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        opStatus.setForeground(new java.awt.Color(102, 102, 102));
+        opStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Aprovado", "Não Aprovado" }));
+        opStatus.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(243, 218, 202), 3));
+        opStatus.setFocusable(false);
+        opStatus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                opStatusActionPerformed(evt);
+            }
+        });
+        side_pane1.add(opStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 630, 220, 50));
+
         tablePane.setBackground(new java.awt.Color(62, 120, 198));
         tablePane.setForeground(new java.awt.Color(204, 204, 0));
 
-        tableUsuarios.setBackground(new java.awt.Color(255, 255, 255));
-        tableUsuarios.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        tableUsuarios.setForeground(new java.awt.Color(51, 51, 51));
-        tableUsuarios.setModel(new javax.swing.table.DefaultTableModel(
+        tableAdocoes.setBackground(new java.awt.Color(255, 255, 255));
+        tableAdocoes.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        tableAdocoes.setForeground(new java.awt.Color(51, 51, 51));
+        tableAdocoes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "id", "Animal", "Adotante", "status"
             }
         ));
-        tableUsuarios.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
-        tableUsuarios.setRowHeight(30);
-        tablePane.setViewportView(tableUsuarios);
+        tableAdocoes.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
+        tableAdocoes.setRowHeight(30);
+        tablePane.setViewportView(tableAdocoes);
 
         side_pane1.add(tablePane, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 1030, 380));
+
+        btnNovo1.setBackground(new java.awt.Color(223, 151, 107));
+        btnNovo1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnNovo1.setForeground(new java.awt.Color(255, 255, 255));
+        btnNovo1.setText("Novo Animal");
+        btnNovo1.setToolTipText("");
+        btnNovo1.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        btnNovo1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNovo1ActionPerformed(evt);
+            }
+        });
+        side_pane1.add(btnNovo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 70, 190, 50));
 
         logo1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         logo1.setForeground(new java.awt.Color(255, 255, 255));
@@ -186,19 +213,57 @@ public class DashBoard extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
-        CadAnimais dash = new CadAnimais();
+    private void SairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SairActionPerformed
+        Login dash = new Login();
         dispose();
         dash.setVisible(true); 
-    }//GEN-LAST:event_btnNovoActionPerformed
+        
+        UserDAO obj = new UserDAO();
+        obj.logout();
+        
+        JOptionPane.showMessageDialog(null, "Logout realizado com sucesso");
+    }//GEN-LAST:event_SairActionPerformed
 
     private void btnCadastro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastro1ActionPerformed
-        // TODO add your handling code here:
+        String id, statusTX;
+        Boolean status = false;
+
+        id = txtId.getText();
+        statusTX = opStatus.getSelectedItem().toString();
+        
+        if(statusTX.equals("Aprovado")){
+            status = true;
+        }
+        if(statusTX.equals("Não Aprovado")){
+            status = false;
+        }
+        
+        try {
+            AdocaoDTO objAdocaoDTO = new AdocaoDTO();
+            objAdocaoDTO.setId(id);
+            objAdocaoDTO.setStatus(status);
+
+            AdocoesDAO obj = new AdocoesDAO();
+            obj.aprovarAdocao(objAdocaoDTO);
+      
+        listarAdocoes();
+
+        } catch (Exception  e) {
+            JOptionPane.showMessageDialog(null, "Um erro aconteceu revise os campos e tente novamente");
+        }
     }//GEN-LAST:event_btnCadastro1ActionPerformed
 
-    private void txtNome(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNome
+    private void txtId(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtId
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNome
+    }//GEN-LAST:event_txtId
+
+    private void opStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opStatusActionPerformed
+
+    }//GEN-LAST:event_opStatusActionPerformed
+
+    private void btnNovo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovo1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnNovo1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -212,28 +277,30 @@ public class DashBoard extends javax.swing.JFrame {
         });
     }
 
-  private void listarUsuarios() {
+  private void listarAdocoes() {
         try {
         Conexaobd conn = new Conexaobd();
-        UserDAO obj = new UserDAO();
+        AdocoesDAO obj = new AdocoesDAO();
 
-        DefaultTableModel model = (DefaultTableModel) tableUsuarios.getModel();
+        DefaultTableModel model = (DefaultTableModel) tableAdocoes.getModel();
         
         model.setNumRows(0);
 
-        ArrayList<UserDTO> lista = obj.listarUsuarios(conn.conebd());
+        ArrayList<AdocaoDTO> lista = obj.listarAdocoes(conn.conebd());
         List<String[]> sqlTable = new ArrayList<String[]>();
 
         for (int num = 0; num < lista.size(); num++) {
             model.addRow(new Object[]{
-            lista.get(num).getNome(),
-            lista.get(num).getEmail(),
+            lista.get(num).getId(),
+            lista.get(num).getAnimal(),
+            lista.get(num).getUsuario(),
+            lista.get(num).isStatus(),
             });
         }
-        tableUsuarios.setGridColor(Color.decode("#8D6747"));
-        tableUsuarios.getTableHeader().setBackground(Color.decode("#8D6747"));
-        tableUsuarios.getTableHeader().setForeground(Color.white);
-        tableUsuarios.getTableHeader().setFont(new Font("Segoe UI", Font.PLAIN, 18));
+        tableAdocoes.setGridColor(Color.decode("#8D6747"));
+        tableAdocoes.getTableHeader().setBackground(Color.decode("#8D6747"));
+        tableAdocoes.getTableHeader().setForeground(Color.white);
+        tableAdocoes.getTableHeader().setFont(new Font("Segoe UI", Font.PLAIN, 18));
         
         JList list = new JList(sqlTable.toArray());
         list.setCellRenderer(new ListCellRenderer() {
@@ -258,9 +325,10 @@ public class DashBoard extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JLabel logo1;
     private javax.swing.JLabel logo2;
+    private javax.swing.JComboBox<String> opStatus;
     private javax.swing.JPanel side_pane1;
+    private javax.swing.JTable tableAdocoes;
     private javax.swing.JScrollPane tablePane;
-    private javax.swing.JTable tableUsuarios;
-    private javax.swing.JTextField txtNome;
+    private javax.swing.JTextField txtId;
     // End of variables declaration//GEN-END:variables
 }

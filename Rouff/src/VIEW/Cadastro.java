@@ -4,9 +4,23 @@
  */
 package VIEW;
 
+import ConexaoDAO.AnimalDAO;
+import ConexaoDAO.Conexaobd;
 import ConexaoDAO.UserDAO;
+import DTO.AnimalDTO;
 import DTO.UserDTO;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Font;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.ListCellRenderer;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -14,11 +28,22 @@ import javax.swing.JOptionPane;
  */
 public class Cadastro extends javax.swing.JFrame {
 
+    String UserId;
+
+    public String getUserId() {
+        return UserId;
+    }
+
+    public void setUserId(String UserId) {
+        this.UserId = UserId;
+    }
+
     /**
      * Creates new form CadAdotadorVIEW
      */
     public Cadastro() {
         initComponents();
+        //listarUsua();
     }
 
     /**
@@ -30,90 +55,122 @@ public class Cadastro extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        side_pane = new javax.swing.JPanel();
-        logo = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        logo1 = new javax.swing.JLabel();
-        txtPassword = new javax.swing.JTextField();
-        txtNome = new javax.swing.JTextField();
-        jComboBox = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        side_pane1 = new javax.swing.JPanel();
         logo2 = new javax.swing.JLabel();
-        jToggleButton1 = new javax.swing.JToggleButton();
-        btnCadastro = new javax.swing.JButton();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        txtPassword = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        jPanel9 = new javax.swing.JPanel();
+        jPanel8 = new javax.swing.JPanel();
+        txtNome = new javax.swing.JTextField();
+        jPanel7 = new javax.swing.JPanel();
+        btnCadastro = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        logo3 = new javax.swing.JLabel();
+        opUsuario = new javax.swing.JComboBox<>();
         txtEmail = new javax.swing.JTextField();
-        jPanel3 = new javax.swing.JPanel();
-        jPanel5 = new javax.swing.JPanel();
-        jPanel4 = new javax.swing.JPanel();
+        javax.swing.JButton Sair = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
         background = new javax.swing.JLabel();
 
+        jLabel1.setBackground(new java.awt.Color(204, 0, 0));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(102, 102, 102));
 
-        side_pane.setBackground(new java.awt.Color(255, 255, 255));
-        side_pane.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        side_pane.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, -1, 210));
+        side_pane1.setBackground(new java.awt.Color(255, 255, 255));
+        side_pane1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel8.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(46, 43, 39));
-        jLabel8.setText("by: @gagonzaga, @petile & @gsabino");
-        side_pane.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 700, 190, 30));
-
-        logo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIEW/images/logo@1x.png"))); // NOI18N
-        side_pane.add(logo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, 220, 110));
+        logo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIEW/images/logo.png"))); // NOI18N
+        side_pane1.add(logo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, -20, 370, 210));
 
         txtPassword.setBackground(new java.awt.Color(243, 218, 202));
         txtPassword.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtPassword.setForeground(new java.awt.Color(102, 102, 102));
-        txtPassword.setToolTipText("");
         txtPassword.setBorder(null);
         txtPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPassword(evt);
             }
         });
-        side_pane.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 390, 440, 47));
+        side_pane1.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 380, 430, 47));
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("Senha");
+        side_pane1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 350, -1, -1));
+
+        jPanel9.setBackground(new java.awt.Color(243, 218, 202));
+
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 90, Short.MAX_VALUE)
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 47, Short.MAX_VALUE)
+        );
+
+        side_pane1.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 220, 90, 47));
+
+        jPanel8.setBackground(new java.awt.Color(243, 218, 202));
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 90, Short.MAX_VALUE)
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 47, Short.MAX_VALUE)
+        );
+
+        side_pane1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 300, 90, 47));
 
         txtNome.setBackground(new java.awt.Color(243, 218, 202));
         txtNome.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtNome.setForeground(new java.awt.Color(102, 102, 102));
-        txtNome.setToolTipText("    ");
         txtNome.setBorder(null);
         txtNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNome(evt);
             }
         });
-        side_pane.add(txtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 220, 430, 47));
+        side_pane1.add(txtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 220, 430, 47));
 
-        jComboBox.setBackground(new java.awt.Color(255, 255, 255));
-        jComboBox.setForeground(new java.awt.Color(102, 102, 102));
-        jComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Adotante", "Administrador" }));
-        jComboBox.setBorder(null);
-        jComboBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBoxActionPerformed(evt);
-            }
-        });
-        side_pane.add(jComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 480, 450, 50));
+        jPanel7.setBackground(new java.awt.Color(243, 218, 202));
 
-        logo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIEW/images/eye.png"))); // NOI18N
-        side_pane.add(logo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 410, 40, 30));
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 90, Short.MAX_VALUE)
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 47, Short.MAX_VALUE)
+        );
 
-        jToggleButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jToggleButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jToggleButton1.setText("jToggleButton1");
-        jToggleButton1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jToggleButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton1ActionPerformed(evt);
-            }
-        });
-        side_pane.add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 398, 40, 40));
+        side_pane1.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 380, 90, 47));
 
         btnCadastro.setBackground(new java.awt.Color(141, 103, 71));
         btnCadastro.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -125,32 +182,48 @@ public class Cadastro extends javax.swing.JFrame {
                 btnCadastroActionPerformed(evt);
             }
         });
-        side_pane.add(btnCadastro, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 560, 240, 50));
+        side_pane1.add(btnCadastro, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 540, 240, 50));
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("Voce é?");
+        side_pane1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 450, -1, -1));
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel7.setText("Nome");
+        side_pane1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 190, -1, -1));
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setText("Cadastro");
-        side_pane.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 110, -1, -1));
+        side_pane1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 110, -1, -1));
+
+        jLabel10.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(46, 43, 39));
+        jLabel10.setText("by: @gagonzaga, @petile & @gsabino");
+        side_pane1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 700, 190, 30));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("Voce é?");
-        side_pane.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 460, -1, -1));
+        jLabel2.setText("Email");
+        side_pane1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 270, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel3.setText("Email");
-        side_pane.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 270, -1, -1));
+        logo3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIEW/images/eye.png"))); // NOI18N
+        side_pane1.add(logo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 390, 40, 30));
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setText("Nome");
-        side_pane.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 190, -1, -1));
-
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel5.setText("Senha");
-        side_pane.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 360, -1, -1));
+        opUsuario.setBackground(new java.awt.Color(255, 255, 255));
+        opUsuario.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        opUsuario.setForeground(new java.awt.Color(102, 102, 102));
+        opUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Adotante", "Administrador" }));
+        opUsuario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(243, 218, 202), 3));
+        opUsuario.setFocusable(false);
+        opUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                opUsuarioActionPerformed(evt);
+            }
+        });
+        side_pane1.add(opUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 480, 450, 50));
 
         txtEmail.setBackground(new java.awt.Color(243, 218, 202));
         txtEmail.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -161,99 +234,53 @@ public class Cadastro extends javax.swing.JFrame {
                 txtEmail(evt);
             }
         });
-        side_pane.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 300, 430, 47));
+        side_pane1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 300, 430, 47));
 
-        jPanel3.setBackground(new java.awt.Color(243, 218, 202));
+        Sair.setBackground(new java.awt.Color(162, 136, 115));
+        Sair.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        Sair.setForeground(new java.awt.Color(255, 255, 255));
+        Sair.setText("Login");
+        Sair.setToolTipText("");
+        Sair.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        Sair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SairActionPerformed(evt);
+            }
+        });
+        side_pane1.add(Sair, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 630, 240, 50));
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 43, Short.MAX_VALUE)
-        );
-
-        side_pane.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 392, -1, 43));
-        jPanel3.getAccessibleContext().setAccessibleName("");
-
-        jPanel5.setBackground(new java.awt.Color(243, 218, 202));
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 110, Short.MAX_VALUE)
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 43, Short.MAX_VALUE)
-        );
-
-        side_pane.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 302, -1, -1));
-
-        jPanel4.setBackground(new java.awt.Color(243, 218, 202));
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 110, Short.MAX_VALUE)
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 43, Short.MAX_VALUE)
-        );
-
-        side_pane.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 222, 110, 43));
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setText("Já possui uma conta?");
+        side_pane1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 600, -1, -1));
 
         background.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         background.setForeground(new java.awt.Color(255, 255, 255));
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIEW/images/cadastro_background.png"))); // NOI18N
         background.setText("    ");
-        side_pane.add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1160, 730));
+        side_pane1.add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(-30, 0, 1170, 730));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(side_pane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(side_pane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(side_pane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(side_pane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void txtPassword(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPassword
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPassword
+
     private void txtNome(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNome
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNome
-
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        /*if( jToggleButton1.isEnabled()){
-            txtPassword.setEchoChar((char)0);
-        }if( jToggleButton1.isDisplayable()){
-            txtPassword.setEchoChar('*');
-        }else{
-            txtPassword.setEchoChar('*');
-        }
-        
-         if(txtNome.getText() != "" && txtEmail.getText() != "" && txtPassword.getText() != ""){
-            btnCadastro.setEnabled(false);
-             JOptionPane.showMessageDialog(null, "Preencha todos os campos para prosseguir");
-        }
-        
-        
-        */
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void btnCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroActionPerformed
         String email, senha, nome, tipo, role = null;
@@ -261,28 +288,28 @@ public class Cadastro extends javax.swing.JFrame {
         nome = txtNome.getText();
         email = txtEmail.getText();
         senha = txtPassword.getText();
-        tipo = jComboBox.getSelectedItem().toString();
-        
-        if(nome == "" || email == "" || senha == ""){
-            JOptionPane.showMessageDialog(null, "Preencha todos os campos para prosseguir");
-        }
-        
-        if(tipo == "Adotante"){
-            role = "USU";
-        };
-        
-        if(tipo == "Administrador"){
-            try{
-                String pwd = JOptionPane.showInputDialog("Digite a senha para cadastro de ADM");
-                if(pwd != null){
-                  role = "ADM";
-                }
-            }catch (Exception  e) {
-                JOptionPane.showMessageDialog(null, "Senha para cadastro de ADM incorreta");
-            }
-        }
-       
+        tipo = opUsuario.getSelectedItem().toString();
+
         try {
+            if (nome.equals("") || email.equals("") || senha.equals("")) {
+                JOptionPane.showMessageDialog(null, "Preencha todos os campos para prosseguir");
+            }
+
+            if (tipo.equals("Adotante")) {
+                role = "USU";
+            };
+
+            if (tipo.equals("Administrador")) {
+                try {
+                    String pwd = JOptionPane.showInputDialog("Digite a senha para cadastro de ADM");
+                    if (pwd.equals("123")) {
+                        role = "ADM";
+                    }
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "Senha para cadastro de ADM incorreta");
+                }
+            }
+            
             UserDTO objsUserDTO = new UserDTO();
             objsUserDTO.setNome(nome);
             objsUserDTO.setEmail(email);
@@ -291,71 +318,32 @@ public class Cadastro extends javax.swing.JFrame {
 
             UserDAO objUser = new UserDAO();
             objUser.cadastrar(objsUserDTO);
-            
-            Login dash = new Login();
-            dispose();
-            dash.setVisible(true);
-            JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso, faça seu login");
 
-        } catch (Exception  e) {
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Um erro aconteceu revise os campos e tente novamente");
         }
+
+        Login dash = new Login();
+        dispose();
+        dash.setVisible(true);
+        JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso, faça seu login");
     }//GEN-LAST:event_btnCadastroActionPerformed
-
-    private void jComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxActionPerformed
-
-    }//GEN-LAST:event_jComboBoxActionPerformed
-
-    private void txtPassword(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPassword
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPassword
 
     private void txtEmail(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmail
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEmail
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Cadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Cadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Cadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Cadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
+    private void opUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opUsuarioActionPerformed
 
+    }//GEN-LAST:event_opUsuarioActionPerformed
+
+    private void SairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SairActionPerformed
+        Login dash = new Login();
+        dispose();
+        dash.setVisible(true);
+    }//GEN-LAST:event_SairActionPerformed
+
+    public static void main(String args[]) {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -367,21 +355,22 @@ public class Cadastro extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel background;
     private javax.swing.JButton btnCadastro;
-    private javax.swing.JComboBox<String> jComboBox;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JToggleButton jToggleButton1;
-    private javax.swing.JLabel logo;
-    private javax.swing.JLabel logo1;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JLabel logo2;
-    private javax.swing.JPanel side_pane;
+    private javax.swing.JLabel logo3;
+    private javax.swing.JComboBox<String> opUsuario;
+    private javax.swing.JPanel side_pane1;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtPassword;

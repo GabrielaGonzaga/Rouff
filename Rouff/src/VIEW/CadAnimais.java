@@ -204,13 +204,10 @@ public class CadAnimais extends javax.swing.JFrame {
         tableAnimals.setForeground(new java.awt.Color(51, 51, 51));
         tableAnimals.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "id", "Animal", "Adotante", "status"
+                "id", "Animal", "Tipo", "Raça", "descricão"
             }
         ));
         tableAnimals.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
@@ -321,6 +318,7 @@ public class CadAnimais extends javax.swing.JFrame {
 
         for (int num = 0; num < lista.size(); num++) {
             model.addRow(new Object[]{
+            lista.get(num).getId(),
             lista.get(num).getNome(),
             lista.get(num).getRaca(),
             lista.get(num).getTipo(),
